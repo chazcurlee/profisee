@@ -33,7 +33,8 @@ module.exports = {
         }
       },
       salesDate: {
-        type: Sequelize.STRING
+        type: Sequelize.DATEONLY,
+        defaultValue: Sequelize.fn('now')
       },
       createdAt: {
         allowNull: true,

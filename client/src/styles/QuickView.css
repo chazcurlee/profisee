@@ -1,0 +1,57 @@
+#quick-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#quick-data-container {
+  display: flex;
+  justify-content: space-around;
+  flex-grow: 1;
+}
+
+.data-placement-left {
+  flex-basis: 50%;
+  max-width: 30vw;
+  max-height: 35vh;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  color: #342056;
+}
+
+.data-placement-right {
+  flex-basis: 50%;
+  max-width: 30vw;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  color: #342056;
+}
+
+.sales-count-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.9rem;
+  border-top: 1px solid #342056;
+}
+
+.last-five-sales {
+  margin-top: 1rem;
+  max-width: 30vw;
+  min-height: 10vh;
+}
+
+.recent-sale-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  justify-content: center;
+  align-items: center;
+}
+
+.recent-sale-detail-container {
+  align-self: center;
+  padding: 16px 0 0 0;
+}

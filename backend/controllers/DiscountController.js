@@ -1,11 +1,11 @@
-const Discount = require('../models/discount')
+const {Discount} = require('../models')
 
 
 //////////////// GET CONTROLLERS ////////////////
 
 const GetAllDiscounts = async (req, res) => {
     try{
-        const allDiscounts = await Discount.findAll({})
+        const allDiscounts = await Discount.findAll()
         res.send(allDiscounts)
     }catch(error){
         throw error
@@ -17,6 +17,20 @@ const GetSingleDiscount = async (req, res) => {
         const singleDiscount = await Discount.findByPk(parseInt(req.params.discount_id))
         res.send(singleDiscount)
     }catch(error){
+        throw error
+    }
+}
+
+///////////// CREATE CONTROLLERS ////////////////
+
+const CreateDiscount = async (req, res) => {
+    try{
+        const discountBody = {
+            ...req.body
+        }
+        const newDiscount = await Discount.create(discountBody)
+        res.send(newDiscount)
+    }catch(error) {
         throw error
     }
 }
@@ -52,6 +66,7 @@ const UpdateDiscount = async (req, res) => {
 module.exports = {
     GetAllDiscounts,
     GetSingleDiscount,
+    CreateDiscount,
     DeleteDiscount,
     UpdateDiscount
 }

@@ -1,11 +1,11 @@
-const SalesPerson = require('../models/salesperson')
+const {SalesPerson} = require('../models')
 
 
 //////////////// GET CONTROLLERS ////////////////
 
 const GetAllSalesPeople = async (req, res) => {
     try{
-        const allSalesPeople = await SalesPerson.findAll({})
+        const allSalesPeople = await SalesPerson.findAll()
         res.send(allSalesPeople)
     }catch(error){
         throw error
@@ -17,6 +17,20 @@ const GetSingleSalesPerson = async (req, res) => {
         const singleSalesPerson = await Sale.findByPk(parseInt(req.params.salesperson_id))
         res.send(singleSalesPerson)
     }catch(error){
+        throw error
+    }
+}
+
+///////////// CREATE CONTROLLERS ////////////////
+
+const CreateSalesPerson = async (req, res) => {
+    try{
+        const salesPersonBody = {
+            ...req.body
+        }
+        const newSalesPerson = await SalesPerson.create(salesPersonBody)
+        res.send(newSalesPerson)
+    }catch(error) {
         throw error
     }
 }
@@ -37,8 +51,8 @@ const DeleteSalesPerson = async (req, res) => {
 
 const UpdateSalesPerson = async (req, res) => {
     try{
-        const salesPersonId = parseInt(req.params.salesPerson_id)
-        const updatedSalesPerson = await Sale.update(req.body, {
+        const salesPersonId = parseInt(req.params.salesperson_id)
+        const updatedSalesPerson = await SalesPerson.update(req.body, {
             where: {id: salesPersonId},
             returning: true
         })
@@ -51,6 +65,7 @@ const UpdateSalesPerson = async (req, res) => {
 module.exports = {
     GetAllSalesPeople,
     GetSingleSalesPerson,
+    CreateSalesPerson,
     DeleteSalesPerson,
     UpdateSalesPerson
 }

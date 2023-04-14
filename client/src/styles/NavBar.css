@@ -1,0 +1,31 @@
+#nav-container {
+  height: 100vh;
+  max-width: 5vw;
+  position: sticky;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #342056;
+  color: hsl(262, 46%, 98%);
+}
+
+.nav-item {
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.nav-item:hover {
+  text-decoration: underline;
+}
+
+#sales-dialog {
+  /* color: #342056; */
+}
+
+.select {
+  width: 25rem;
+  /* margin-top: 2rem; */
+  color: black;
+}

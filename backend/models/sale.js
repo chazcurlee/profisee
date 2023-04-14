@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Sale.belongsTo(models.Product, { foreignKey: 'productId'})
-      Sale.belongsTo(models.SalesPErson, { foreignKey: 'salesPersonId'})
+      Sale.belongsTo(models.SalesPerson, { foreignKey: 'salesPersonId'})
       Sale.belongsTo(models.Customer, { foreignKey: 'customerId'})
     }
   }
@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     productId: DataTypes.INTEGER,
     salesPersonId: DataTypes.INTEGER,
     customerId: DataTypes.INTEGER,
-    salesDate: DataTypes.STRING
+    salesDate: DataTypes.DATEONLY
   }, {
     sequelize,
     modelName: 'Sale',

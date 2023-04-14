@@ -1,0 +1,36 @@
+#product-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  align-self: center;
+  justify-self: center;
+}
+
+#product-list-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: 1rem;
+  align-self: center;
+}
+
+.product-details-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.product-name {
+  grid-row: 1;
+  grid-column: 1/4;
+}
+
+.row-4 {
+  grid-row: 4;
+}
+
+.delete {
+  grid-column: 3;
+}
