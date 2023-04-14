@@ -1,5 +1,7 @@
 import { Button, Card, CardContent, Typography } from "@mui/material";
 import "../styles/SalesPeople.css";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 const SalesPeople = (props) => {
   return (

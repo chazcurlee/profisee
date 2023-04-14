@@ -7,12 +7,12 @@ import DialogTitle from "@mui/material/DialogTitle";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import axios from "axios";
 
 const SalesButton = (props) => {
   const [open, setOpen] = useState(false);
-  const [productNames, setProductNames] = useState([]);
-  const [customerNames, setCustomerNames] = useState([]);
-  const [salesPersonNames, setSalesPersonNames] = useState([]);
+  const [recordSale, setRecordSale] = useState({});
+  const [buttonTrigger, setButtonTrigger] = useState(true);
 
   const handleSaleClick = () => {
     setOpen(true);
@@ -20,34 +20,53 @@ const SalesButton = (props) => {
 
   const handleClose = () => {
     setOpen(false);
+    setRecordSale({});
+    setButtonTrigger(true);
+  };
+
+  const handleClick = (e) => {
+    const { myValue } = e.currentTarget.dataset;
+    const target = e.target.id;
+    let newSale;
+    if (target === "product") {
+      newSale = { ...recordSale, productId: parseInt(myValue) };
+    }
+    if (target === "customer") {
+      newSale = { ...recordSale, customerId: parseInt(myValue) };
+    }
+    if (target === "salesPerson") {
+      newSale = { ...recordSale, salesPersonId: parseInt(myValue) };
+    }
+    setRecordSale(newSale);
+  };
+
+  const handleSubmit = async () => {
+    let newSale = await axios.post("http://localhost:3001/sale", {
+      productId: recordSale.productId,
+      customerId: recordSale.customerId,
+      salesPersonId: recordSale.salesPersonId,
+    });
+
+    setRecordSale({});
+    console.log(newSale);
+    setOpen(false);
+    setButtonTrigger(true);
   };
 
   useEffect(() => {
-    const tempProd = [];
-    const tempCust = [];
-    const tempSalesPerson = [];
-
-    props.products.map((product) => {
-      tempProd.push(product.name);
-    });
-    props.salesPeople.map((salesPerson) => {
-      let fullName = salesPerson.firstName + " " + salesPerson.lastName;
-      tempSalesPerson.push(fullName);
-    });
-    props.customers.map((customer) => {
-      let fullName = customer.firstName + " " + customer.lastName;
-      tempCust.push(fullName);
-    });
-
-    setProductNames(tempProd);
-    setCustomerNames(tempCust);
-    setSalesPersonNames(tempSalesPerson);
-  }, []);
+    if (
+      Object.keys(recordSale).indexOf("productId") > -1 &&
+      Object.keys(recordSale).indexOf("customerId") > -1 &&
+      Object.keys(recordSale).indexOf("salesPersonId") > -1
+    ) {
+      setButtonTrigger(false);
+    }
+  }, [recordSale]);
 
   return (
     <div>
       <Button onClick={handleSaleClick}>New Sale</Button>
-      <form>
+      <form onSubmit={handleSubmit}>
         <Dialog
           id="sales-dialog"
           style={{
@@ -62,35 +81,54 @@ const SalesButton = (props) => {
           <DialogContent>
             <InputLabel>Product</InputLabel>
             <Select className="select">
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              {productNames.map((product) => (
-                <MenuItem value={product}>{product}</MenuItem>
+              {props.products.map((product) => (
+                <MenuItem
+                  key={product.id}
+                  data-my-value={product.id}
+                  value={product.name}
+                  id="product"
+                  onClick={handleClick}
+                >
+                  {product.name}
+                </MenuItem>
               ))}
             </Select>
             <InputLabel>SalesPerson Name</InputLabel>
             <Select className="select">
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              {salesPersonNames.map((salesPerson) => (
-                <MenuItem value={salesPerson}>{salesPerson}</MenuItem>
+              {props.salesPeople.map((salesPerson) => (
+                <MenuItem
+                  key={salesPerson.id}
+                  data-my-value={salesPerson.id}
+                  id="salesPerson"
+                  value={salesPerson.firstName + " " + salesPerson.lastName}
+                  onClick={handleClick}
+                >
+                  {salesPerson.firstName} {salesPerson.lastName}
+                </MenuItem>
               ))}
             </Select>
             <InputLabel>Customer Name</InputLabel>
             <Select className="select">
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              {customerNames.map((customer) => (
-                <MenuItem value={customer}>{customer}</MenuItem>
+              {props.customers.map((customer) => (
+                <MenuItem
+                  key={customer.id}
+                  data-my-value={customer.id}
+                  id="customer"
+                  value={customer.firstName + " " + customer.lastName}
+                  onClick={handleClick}
+                >
+                  {customer.firstName} {customer.lastName}
+                </MenuItem>
               ))}
             </Select>
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>
-            <Button type="submit" onClick={handleClose}>
+            <Button
+              disabled={buttonTrigger}
+              type="submit"
+              onClick={handleSubmit}
+            >
               Record Sale
             </Button>
           </DialogActions>
