@@ -25,13 +25,13 @@ const ProductList = (props) => {
       <div id="product-list-container">
         <Card>
           <CardContent id="product-details-header">
-            <Typography>Manufacturer</Typography>
-            <Typography>Name</Typography>
-            <Typography>Style</Typography>
-            <Typography>Amount in Stock</Typography>
-            <Typography>Purchase Price</Typography>
-            <Typography>Sale Price</Typography>
-            <Typography>Commission Percent</Typography>
+            <Typography variant="h5">Manufacturer</Typography>
+            <Typography variant="h5">Name</Typography>
+            <Typography variant="h5">Style</Typography>
+            <Typography variant="h5">Amount in Stock</Typography>
+            <Typography variant="h5">Purchase Price</Typography>
+            <Typography variant="h5">Sale Price</Typography>
+            <Typography variant="h5">Commission Percent</Typography>
           </CardContent>
         </Card>
         {props.products.map((product) => (

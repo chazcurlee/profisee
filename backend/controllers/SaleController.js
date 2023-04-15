@@ -38,6 +38,80 @@ const GetAllSales = async (req, res) => {
     }
 }
 
+const GetDescSales = async (req, res) => {
+    try{
+        const allSales = await Sale.findAll({
+            raw: true,
+            attributes: {
+                include: [[Sequelize.col('Customer.firstName'), 'customerFirstName'], [Sequelize.col('Customer.lastName'), 'customerLastName'], [Sequelize.col('SalesPerson.firstName'), 'salesPersonFirstName'], [Sequelize.col('SalesPerson.lastName'), 'salesPersonLastName'], [Sequelize.col('Product.name'), 'productName'], [Sequelize.col("Product.commissionPercent"), "saleCommission"], [Sequelize.col("Product.salePrice"), "salePrice"]]
+            },
+            include: [
+                {
+                model: Customer,
+                required: false,
+                as: 'Customer',
+                attributes: []
+                },
+                {
+                model: SalesPerson,
+                required: false,
+                as: 'SalesPerson',
+                attributes: []
+                },
+                {
+                model: Product,
+                required: false,
+                as: 'Product',
+                attributes: []
+                },
+
+            ],
+            order: [['salesDate', 'DESC']]
+
+        })
+        res.send(allSales)
+    }catch(error){
+        throw error
+    }
+}
+
+const GetAscSales = async (req, res) => {
+    try{
+        const allSales = await Sale.findAll({
+            raw: true,
+            attributes: {
+                include: [[Sequelize.col('Customer.firstName'), 'customerFirstName'], [Sequelize.col('Customer.lastName'), 'customerLastName'], [Sequelize.col('SalesPerson.firstName'), 'salesPersonFirstName'], [Sequelize.col('SalesPerson.lastName'), 'salesPersonLastName'], [Sequelize.col('Product.name'), 'productName'], [Sequelize.col("Product.commissionPercent"), "saleCommission"], [Sequelize.col("Product.salePrice"), "salePrice"]]
+            },
+            include: [
+                {
+                model: Customer,
+                required: false,
+                as: 'Customer',
+                attributes: []
+                },
+                {
+                model: SalesPerson,
+                required: false,
+                as: 'SalesPerson',
+                attributes: []
+                },
+                {
+                model: Product,
+                required: false,
+                as: 'Product',
+                attributes: []
+                },
+
+            ],
+            order: [['salesDate', 'ASC']]
+
+        })
+        res.send(allSales)
+    }catch(error){
+        throw error
+    }
+}
+
 const GetLastFiveSales = async (req, res) => {
     try{
         const fiveSales = await Sale.findAll({
@@ -127,6 +201,8 @@ const UpdateSale = async (req, res) => {
 
 module.exports = {
     GetAllSales,
+    GetDescSales,
+    GetAscSales,
     GetSingleSale,
     GetLastFiveSales,
     CreateSale,

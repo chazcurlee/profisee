@@ -60,41 +60,48 @@ const UpdateProduct = (props) => {
         <DialogContent>
           <InputLabel>Name</InputLabel>
           <TextField
+            className="product-update-container"
             id="name"
             defaultValue={props.updateProduct.name}
             onChange={handleChange}
           />
           <InputLabel>Manufacturer</InputLabel>
           <TextField
+            className="product-update-container"
             id="manufacturer"
             defaultValue={props.updateProduct.manufacturer}
             onChange={handleChange}
           />
           <InputLabel>Style</InputLabel>
           <TextField
+            className="product-update-container"
             id="style"
             defaultValue={props.updateProduct.style}
             onChange={handleChange}
           />
           <InputLabel>Purchase Price</InputLabel>
           <TextField
+            className="product-update-container"
             id="purchasedPrice"
-            defaultValue={props.updateProduct.purchasedPrice}
+            defaultValue={props.updateProduct.purchasePrice}
             onChange={handleChange}
           />
           <InputLabel>Sale Price</InputLabel>
           <TextField
+            className="product-update-container"
             id="salePrice"
             defaultValue={props.updateProduct.salePrice}
             onChange={handleChange}
           />
           <InputLabel>Current Quantity</InputLabel>
           <TextField
+            className="product-update-container"
             id="currentQuantity"
             defaultValue={props.updateProduct.currentQuantity}
           />
           <InputLabel>Commission Percentage</InputLabel>
           <TextField
+            className="product-update-container"
             id="commissionPercent"
             defaultValue={props.updateProduct.commissionPercent}
             onChange={handleChange}

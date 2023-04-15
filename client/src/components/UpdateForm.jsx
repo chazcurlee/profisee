@@ -59,41 +59,48 @@ const UpdateForm = (props) => {
         <DialogContent>
           <InputLabel>First Name</InputLabel>
           <TextField
+            className="salespeople-update-container"
             id="firstName"
             defaultValue={props.updatePerson.firstName}
             onChange={handleChange}
           />
           <InputLabel>Last Name</InputLabel>
           <TextField
+            className="salespeople-update-container"
             id="lastName"
             defaultValue={props.updatePerson.lastName}
             onChange={handleChange}
           />
           <InputLabel>Address</InputLabel>
           <TextField
+            className="salespeople-update-container"
             id="address"
             defaultValue={props.updatePerson.address}
             onChange={handleChange}
           />
           <InputLabel>Phone</InputLabel>
           <TextField
+            className="salespeople-update-container"
             id="phone"
             defaultValue={props.updatePerson.phone}
             onChange={handleChange}
           />
           <InputLabel>Manager</InputLabel>
           <TextField
+            className="salespeople-update-container"
             id="manager"
             defaultValue={props.updatePerson.manager}
             onChange={handleChange}
           />
           <InputLabel>Start Date</InputLabel>
           <TextField
+            className="salespeople-update-container"
             id="startDate"
             defaultValue={props.updatePerson.startDate}
           />
           <InputLabel>Term Date</InputLabel>
           <TextField
+            className="salespeople-update-container"
             id="termDate"
             defaultValue={props.updatePerson.termDate}
             onChange={handleChange}

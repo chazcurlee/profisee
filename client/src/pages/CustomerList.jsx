@@ -8,10 +8,10 @@ const CustomerList = (props) => {
       <div id="customer-list-container">
         <Card>
           <CardContent id="customer-details-header">
-            <Typography>Name</Typography>
-            <Typography>Address</Typography>
-            <Typography>Phone</Typography>
-            <Typography>Start Date</Typography>
+            <Typography variant="h5">Name</Typography>
+            <Typography variant="h5">Address</Typography>
+            <Typography variant="h5">Phone</Typography>
+            <Typography variant="h5">Start Date</Typography>
           </CardContent>
         </Card>
         {props.customers.map((customer) => (

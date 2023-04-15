@@ -27,6 +27,9 @@ const NavBar = (props) => {
       <div id="customers" className="nav-item" onClick={handleClick}>
         Customers
       </div>
+      <div id="discounts" className="nav-item" onClick={handleClick}>
+        Discounts
+      </div>
       <SalesButton
         products={props.products}
         customers={props.customers}

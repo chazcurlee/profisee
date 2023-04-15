@@ -1,11 +1,22 @@
-const {Discount} = require('../models')
+const {Discount, Product} = require('../models')
 
 
 //////////////// GET CONTROLLERS ////////////////
 
 const GetAllDiscounts = async (req, res) => {
     try{
-        const allDiscounts = await Discount.findAll()
+        const allDiscounts = await Discount.findAll({
+            raw: true,
+            attributes: {
+                include: [[Sequelize.col('Product.name'), 'productName'], [Sequelize.col('Product.salePrice'), 'productPrice']]
+            },
+            include: [{
+                model: Product,
+                required: false,
+                as: 'Product',
+                attributes: []
+            }]
+        })
         res.send(allDiscounts)
     }catch(error){
         throw error

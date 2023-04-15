@@ -20,12 +20,12 @@ const SalesPeople = (props) => {
       <div id="salespeople-list-container">
         <Card>
           <CardContent id="salespeople-details-header">
-            <Typography>Name</Typography>
-            <Typography>Address</Typography>
-            <Typography>Phone</Typography>
-            <Typography>Manager</Typography>
-            <Typography>Start Date</Typography>
-            <Typography>Termination Date</Typography>
+            <Typography variant="h5">Name</Typography>
+            <Typography variant="h5">Address</Typography>
+            <Typography variant="h5">Phone</Typography>
+            <Typography variant="h5">Manager</Typography>
+            <Typography variant="h5">Start Date</Typography>
+            <Typography variant="h5">Termination Date</Typography>
           </CardContent>
         </Card>
         {props.salesPeople.map((person) => (

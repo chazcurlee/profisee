@@ -24,3 +24,22 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 }
+
+#sales-sort {
+  cursor: pointer;
+}
+
+#sales-sort:hover {
+  text-decoration: underline;
+}
+
+.header-titles {
+  padding-top: 1.45rem;
+}
+
+#sort-icon {
+  justify-self: center;
+  align-self: center;
+  padding-top: 1rem;
+  margin: 0;
+}

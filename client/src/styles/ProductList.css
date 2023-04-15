@@ -25,3 +25,7 @@
   display: grid;
   grid-template-columns: repeat(8, 1fr);
 }
+
+.product-update-container {
+  width: 20vw;
+}

@@ -24,6 +24,8 @@ const controllerSalesPerson = require('./controllers/SalesPersonController')
 app.get('/', (req, res) => res.json({ message: 'Server Works'}))
 
 app.get('/sales', controllerSale.GetAllSales)
+app.get('/sales/desc', controllerSale.GetDescSales)
+app.get('/sales/asc', controllerSale.GetAscSales)
 app.get('/fivesales', controllerSale.GetLastFiveSales)
 app.get('/sales/:sale_id', controllerSale.GetSingleSale)
 app.get('/customers', controllerCustomer.GetAllCustomers)
