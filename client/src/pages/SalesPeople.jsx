@@ -1,9 +1,19 @@
-import { Button, Card, CardContent, Typography } from "@mui/material";
+import { Card, CardContent, Typography } from "@mui/material";
+import Button from "@mui/material/Button";
+import UpdateForm from "../components/UpdateForm";
 import "../styles/SalesPeople.css";
-import axios from "axios";
 import { useState, useEffect } from "react";
 
 const SalesPeople = (props) => {
+  const [updateTrigger, setUpdateTrigger] = useState(false);
+  const [updatePerson, setUpdatePerson] = useState({});
+
+  const handleButtonClick = (person) => {
+    setUpdatePerson(person);
+    setUpdateTrigger(true);
+  };
+
+  useEffect(() => {}, [updateTrigger]);
   return (
     <div id="salespeople-container">
       <h1>Sales Roster</h1>
@@ -17,7 +27,13 @@ const SalesPeople = (props) => {
               <Typography className="col-1">
                 Address: {person.address}
               </Typography>
-              <Button className="button">Update</Button>
+              <Button
+                className="button"
+                onClick={() => handleButtonClick(person)}
+              >
+                Update
+              </Button>
+
               <Typography className="col-1">Phone: {person.phone}</Typography>
               <Typography className="row-2 col-2">
                 Manager: {person.manager}
@@ -30,6 +46,12 @@ const SalesPeople = (props) => {
             </CardContent>
           </Card>
         ))}
+        <UpdateForm
+          updateTrigger={updateTrigger}
+          setUpdateTrigger={setUpdateTrigger}
+          updatePerson={updatePerson}
+          setUpdatePerson={setUpdatePerson}
+        />
       </div>
     </div>
   );

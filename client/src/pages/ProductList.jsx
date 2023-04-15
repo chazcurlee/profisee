@@ -1,7 +1,17 @@
 import "../styles/ProductList.css";
 import { Button, Card, CardContent, Typography } from "@mui/material";
+import UpdateProduct from "../components/UpdateProduct";
+import { useState } from "react";
 
 const ProductList = (props) => {
+  const [updateTrigger, setUpdateTrigger] = useState(false);
+  const [updateProduct, setUpdateProduct] = useState({});
+
+  const handleButtonClick = (product) => {
+    setUpdateProduct(product);
+    setUpdateTrigger(true);
+  };
+
   return (
     <div id="product-container">
       <h1>Product List</h1>
@@ -21,12 +31,22 @@ const ProductList = (props) => {
               <Typography>
                 Commission Percentage: {product.commissionPercent}%
               </Typography>
-              <Button className="row-4">Update</Button>
+              <Button
+                onClick={() => handleButtonClick(product)}
+                className="row-4"
+              >
+                Update
+              </Button>
               <Button className="row-4 delete">Delete</Button>
             </CardContent>
           </Card>
         ))}
       </div>
+      <UpdateProduct
+        updateProduct={updateProduct}
+        updateTrigger={updateTrigger}
+        setUpdateTrigger={setUpdateTrigger}
+      />
     </div>
   );
 };
