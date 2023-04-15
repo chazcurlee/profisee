@@ -48,7 +48,6 @@ const SalesButton = (props) => {
     });
 
     setRecordSale({});
-    console.log(newSale);
     setOpen(false);
     setButtonTrigger(true);
     window.location.reload();

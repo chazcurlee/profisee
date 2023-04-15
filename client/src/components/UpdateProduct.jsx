@@ -38,7 +38,6 @@ const UpdateProduct = (props) => {
     );
     props.setUpdateTrigger(false);
     window.location.reload();
-    console.log(updatedInfo);
   };
 
   useEffect(() => {

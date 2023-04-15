@@ -53,11 +53,9 @@ const QuickView = (props) => {
   const orderQtrSales = (saleInfo) => {
     let sortedArr = saleInfo.slice();
     if (sortTrigger && sortedArr.length > 0) {
-      console.log(sortedArr);
       sortedArr.sort((a, b) => {
         return b.count - a.count;
       });
-      console.log(sortedArr);
 
       setSalesCount(sortedArr);
       setSortTrigger(false);
@@ -114,7 +112,6 @@ const QuickView = (props) => {
               <p>{sale.name}</p>
               <p>{sale.count}</p>
             </div>
-            // {orderQtrSales(sale)}
           ))}
         </Paper>
         <div className="data-placement-right">

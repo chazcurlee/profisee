@@ -19,12 +19,11 @@ const SalesView = (props) => {
 
   const handleSort = () => {
     if (orderToggle) {
-      console.log("true");
       setOrderedSales(props.descSales);
       setOrderToggle(false);
       return;
     }
-    console.log("false");
+
     setOrderToggle(true);
   };
 
@@ -60,7 +59,6 @@ const SalesView = (props) => {
                 src="https://cdn.lordicon.com/joihnzio.json"
                 trigger="hover"
                 colors="primary:#121331,secondary:#342056"
-                // style={{ width: "250px", height: "250px" }}
               ></lord-icon>
             </Typography>
           </CardContent>

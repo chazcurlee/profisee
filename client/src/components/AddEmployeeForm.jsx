@@ -42,7 +42,6 @@ const AddEmployeeForm = (props) => {
   };
 
   useEffect(() => {
-    console.log(salesPersonAdd);
     if (
       Object.keys(salesPersonAdd).indexOf("firstName") > -1 &&
       Object.keys(salesPersonAdd).indexOf("lastName") > -1 &&
@@ -51,14 +50,15 @@ const AddEmployeeForm = (props) => {
       Object.keys(salesPersonAdd).indexOf("manager") > -1 &&
       Object.keys(salesPersonAdd).indexOf("startDate") > -1
     ) {
-      console.log("test");
       setButtonTrigger(false);
     }
   }, [salesPersonAdd]);
   return (
     <form>
       <Dialog open={props.addTrigger} onClose={handleClose}>
-        <DialogTitle>Update Sales Person</DialogTitle>
+        <DialogTitle sx={{ fontFamily: ("Ubuntu", "sans-serif") }}>
+          Update Sales Person
+        </DialogTitle>
         <DialogContent>
           <InputLabel>First Name</InputLabel>
           <TextField
