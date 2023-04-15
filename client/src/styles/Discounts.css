@@ -11,13 +11,12 @@
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   align-self: center;
-  width: 90%;
+  width: 75%;
 }
 
 #discount-details-header {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  border-bottom: 1px solid #342056;
 }
 
 .discount-details-container {

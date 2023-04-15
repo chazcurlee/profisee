@@ -11,14 +11,13 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
-  width: 90%;
+  width: 75%;
   align-self: center;
 }
 
 #salespeople-details-header {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  border-bottom: 1px solid #342056;
 }
 
 .salesperson-details-container {

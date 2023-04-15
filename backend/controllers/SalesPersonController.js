@@ -1,11 +1,21 @@
-const {SalesPerson} = require('../models')
+const {SalesPerson, Sale, Sequelize} = require('../models')
 
 
 //////////////// GET CONTROLLERS ////////////////
 
 const GetAllSalesPeople = async (req, res) => {
     try{
-        const allSalesPeople = await SalesPerson.findAll()
+        const allSalesPeople = await SalesPerson.findAll({
+            attributes: {
+                include: [[Sequelize.fn('COUNT', Sequelize.col('salesPersonId')), 'saleCount']]
+            },
+            group: ['SalesPerson.id'],
+            include: [{
+                model: Sale,
+                as: "Sales",
+                attributes: []
+            }]
+        })
         res.send(allSalesPeople)
     }catch(error){
         throw error

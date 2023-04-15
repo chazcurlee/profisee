@@ -6,8 +6,14 @@ const CustomerList = (props) => {
     <div id="customer-container">
       <h1>Customer List</h1>
       <div id="customer-list-container">
-        <Card>
-          <CardContent id="customer-details-header">
+        <Card
+          sx={{
+            backgroundColor: "hsl(262, 46%, 98%)",
+            height: "6rem",
+            borderBottom: "1px solid #342056",
+          }}
+        >
+          <CardContent sx={{ color: "#342056" }} id="customer-details-header">
             <Typography variant="h5">Name</Typography>
             <Typography variant="h5">Address</Typography>
             <Typography variant="h5">Phone</Typography>
@@ -15,8 +21,17 @@ const CustomerList = (props) => {
           </CardContent>
         </Card>
         {props.customers.map((customer) => (
-          <Card>
-            <CardContent className="customer-details-container">
+          <Card
+            sx={{
+              backgroundColor: "hsl(262, 46%, 98%)",
+              height: "6rem",
+              borderBottom: "1px solid #342056",
+            }}
+          >
+            <CardContent
+              sx={{ color: "#342056" }}
+              className="customer-details-container"
+            >
               <Typography className="customer-name">
                 {customer.firstName} {customer.lastName}
               </Typography>

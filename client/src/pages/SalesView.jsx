@@ -32,8 +32,15 @@ const SalesView = (props) => {
     <div id="sales-container">
       <h1>Sales List </h1>
       <div id="sales-list-container">
-        <Card>
-          <CardContent id="sales-details-header">
+        <Card
+          id="sales-header-card"
+          sx={{
+            backgroundColor: "hsl(262, 46%, 98%)",
+            height: "8rem",
+            borderBottom: "1px solid #342056",
+          }}
+        >
+          <CardContent sx={{ color: "#342056" }} id="sales-details-header">
             <Typography variant="h5" className="header-titles">
               Product
             </Typography>
@@ -59,8 +66,17 @@ const SalesView = (props) => {
           </CardContent>
         </Card>
         {orderedSales.map((sale) => (
-          <Card>
-            <CardContent className="sales-details-container">
+          <Card
+            sx={{
+              backgroundColor: "hsl(262, 46%, 98%)",
+              height: "6rem",
+              borderBottom: "1px solid #342056",
+            }}
+          >
+            <CardContent
+              sx={{ color: "#342056" }}
+              className="sales-details-container"
+            >
               <Typography>{sale.productName}</Typography>
               <Typography>
                 {sale.salesPersonFirstName} {sale.salesPersonLastName}

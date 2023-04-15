@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 
 const QuickView = (props) => {
   const [salesCount, setSalesCount] = useState([]);
+  const [sortTrigger, setSortTrigger] = useState(false);
   const date = new Date();
   const currentYear = date.getFullYear();
   const currentMonth = date.getMonth();
@@ -49,6 +50,23 @@ const QuickView = (props) => {
     };
   };
 
+  const orderQtrSales = (saleInfo) => {
+    let sortedArr = saleInfo.slice();
+    if (sortTrigger && sortedArr.length > 0) {
+      console.log(sortedArr);
+      sortedArr.sort((a, b) => {
+        return b.count - a.count;
+      });
+      console.log(sortedArr);
+
+      setSalesCount(sortedArr);
+      setSortTrigger(false);
+    }
+    if (!sortTrigger && sortedArr.length === 0) {
+      setSortTrigger(true);
+    }
+  };
+
   useEffect(() => {
     setQuarter(determineQtr(currentMonth));
 
@@ -77,6 +95,8 @@ const QuickView = (props) => {
     }
   }, []);
 
+  orderQtrSales(salesCount);
+
   return (
     <div id="quick-container">
       <div>
@@ -88,18 +108,22 @@ const QuickView = (props) => {
           elevation={5}
           className="data-placement-left"
         >
-          <h2>Current Quarter Sales</h2>
+          <h2 id="qtr-sales-header">Current Quarter Sales</h2>
           {salesCount.map((sale) => (
             <div key={sale.id} className="sales-count-container">
               <p>{sale.name}</p>
               <p>{sale.count}</p>
             </div>
+            // {orderQtrSales(sale)}
           ))}
         </Paper>
         <div className="data-placement-right">
           <Card
             className="last-five-sales"
-            sx={{ borderBottom: "1px solid #342056;" }}
+            sx={{
+              borderBottom: "1px solid #342056",
+              backgroundColor: "hsl(262, 46%, 98%)",
+            }}
           >
             <CardContent>
               <Typography id="recent-sales-title" sx={{ fontSize: "2rem" }}>
@@ -111,7 +135,10 @@ const QuickView = (props) => {
             <Card
               key={sale.id}
               className="last-five-sales"
-              sx={{ borderBottom: "1px solid #342056;" }}
+              sx={{
+                borderBottom: "1px solid #342056",
+                backgroundColor: "hsl(262, 46%, 98%)",
+              }}
             >
               <CardContent className="recent-sale-details">
                 <Typography className="recent-sale-detail-container">

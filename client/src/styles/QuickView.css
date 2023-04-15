@@ -20,6 +20,11 @@
   color: #342056;
 }
 
+.qtr-sales-header {
+  position: sticky;
+  top: 0;
+}
+
 .data-placement-right {
   flex-basis: 50%;
   max-width: 30vw;

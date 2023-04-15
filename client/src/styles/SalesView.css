@@ -10,14 +10,16 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
-  width: 90%;
+  width: 75%;
   align-self: center;
 }
 
 #sales-details-header {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  border-bottom: 1px solid #342056;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 
 .sales-details-container {

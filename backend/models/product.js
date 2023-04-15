@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     purchasePrice: DataTypes.INTEGER,
     salePrice: DataTypes.INTEGER,
     currentQuantity: DataTypes.INTEGER,
-    commissionPercent: DataTypes.INTEGER
+    commissionPercent: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Product',

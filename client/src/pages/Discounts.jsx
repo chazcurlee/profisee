@@ -9,11 +9,17 @@ const Discounts = (props) => {
   };
 
   return (
-    <div>
+    <div id="discount-container">
       <h1>Discount List</h1>
       <div id="discount-list-container">
-        <Card>
-          <CardContent id="discount-details-header">
+        <Card
+          sx={{
+            backgroundColor: "hsl(262, 46%, 98%)",
+            height: "6rem",
+            borderBottom: "1px solid #342056",
+          }}
+        >
+          <CardContent sx={{ color: "#342056" }} id="discount-details-header">
             <Typography variant="h5">Product</Typography>
             <Typography variant="h5">Original Price</Typography>
             <Typography variant="h5">Discount</Typography>
@@ -23,8 +29,17 @@ const Discounts = (props) => {
           </CardContent>
         </Card>
         {props.discounts.map((discount) => (
-          <Card>
-            <CardContent className="discount-details-container">
+          <Card
+            sx={{
+              backgroundColor: "hsl(262, 46%, 98%)",
+              height: "6rem",
+              borderBottom: "1px solid #342056",
+            }}
+          >
+            <CardContent
+              sx={{ color: "#342056" }}
+              className="discount-details-container"
+            >
               <Typography className="discount-name">
                 {discount.productName}
               </Typography>
@@ -41,13 +56,12 @@ const Discounts = (props) => {
               <Typography>{discount.beginDate}</Typography>
               <Typography>{discount.endDate}</Typography>
               <div>
-                <Button
-                  //   onClick={() => handleButtonClick(discount)}
-                  className="row-4"
-                >
+                <Button sx={{ color: "#342056" }} className="row-4">
                   Update
                 </Button>
-                <Button className="row-4 delete">Delete</Button>
+                <Button sx={{ color: "#342056" }} className="row-4 delete">
+                  Delete
+                </Button>
               </div>
             </CardContent>
           </Card>

@@ -29,8 +29,8 @@ const ProductList = (props) => {
     <div id="product-container">
       <h1>Product List</h1>
       <div id="product-list-container">
-        <Card>
-          <CardContent id="product-details-header">
+        <Card sx={{ backgroundColor: "hsl(262, 46%, 98%)" }}>
+          <CardContent sx={{ color: "#342056" }} id="product-details-header">
             <Typography variant="h5">Manufacturer</Typography>
             <Typography variant="h5">Name</Typography>
             <Typography variant="h5">Style</Typography>
@@ -42,8 +42,17 @@ const ProductList = (props) => {
           </CardContent>
         </Card>
         {props.products.map((product) => (
-          <Card>
-            <CardContent className="product-details-container">
+          <Card
+            sx={{
+              backgroundColor: "hsl(262, 46%, 98%)",
+              height: "6rem",
+              borderBottom: "1px solid #342056",
+            }}
+          >
+            <CardContent
+              sx={{ color: "#342056" }}
+              className="product-details-container"
+            >
               <Typography className="product-name">
                 {product.manufacturer}
               </Typography>
@@ -62,12 +71,15 @@ const ProductList = (props) => {
               </Typography>
               <div>
                 <Button
+                  sx={{ color: "#342056" }}
                   onClick={() => handleButtonClick(product)}
                   className="row-4"
                 >
                   Update
                 </Button>
-                <Button className="row-4 delete">Delete</Button>
+                <Button sx={{ color: "#342056" }} className="row-4 delete">
+                  Delete
+                </Button>
               </div>
             </CardContent>
           </Card>

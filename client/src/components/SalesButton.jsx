@@ -65,7 +65,13 @@ const SalesButton = (props) => {
 
   return (
     <div>
-      <Button onClick={handleSaleClick}>New Sale</Button>
+      <Button
+        variant="contained"
+        sx={{ color: "hsl(262, 46%, 98%)", backgroundColor: "#5454c5" }}
+        onClick={handleSaleClick}
+      >
+        New Sale
+      </Button>
       <form onSubmit={handleSubmit}>
         <Dialog
           id="sales-dialog"

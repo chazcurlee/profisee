@@ -1,16 +1,22 @@
 import { Card, CardContent, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import UpdateForm from "../components/UpdateForm";
+import AddEmployeeForm from "../components/AddEmployeeForm";
 import "../styles/SalesPeople.css";
 import { useState, useEffect } from "react";
 
 const SalesPeople = (props) => {
   const [updateTrigger, setUpdateTrigger] = useState(false);
   const [updatePerson, setUpdatePerson] = useState({});
+  const [addTrigger, setAddTrigger] = useState(false);
 
   const handleButtonClick = (person) => {
     setUpdatePerson(person);
     setUpdateTrigger(true);
+  };
+
+  const handleAddEmployee = () => {
+    setAddTrigger(true);
   };
 
   useEffect(() => {}, [updateTrigger]);
@@ -18,8 +24,17 @@ const SalesPeople = (props) => {
     <div id="salespeople-container">
       <h1>Sales Roster</h1>
       <div id="salespeople-list-container">
-        <Card>
-          <CardContent id="salespeople-details-header">
+        <Card
+          sx={{
+            backgroundColor: "hsl(262, 46%, 98%)",
+            height: "6rem",
+            borderBottom: "1px solid #342056",
+          }}
+        >
+          <CardContent
+            sx={{ color: "#342056" }}
+            id="salespeople-details-header"
+          >
             <Typography variant="h5">Name</Typography>
             <Typography variant="h5">Address</Typography>
             <Typography variant="h5">Phone</Typography>
@@ -29,8 +44,17 @@ const SalesPeople = (props) => {
           </CardContent>
         </Card>
         {props.salesPeople.map((person) => (
-          <Card>
-            <CardContent className="salesperson-details-container">
+          <Card
+            sx={{
+              backgroundColor: "hsl(262, 46%, 98%)",
+              height: "6rem",
+              borderBottom: "1px solid #342056",
+            }}
+          >
+            <CardContent
+              sx={{ color: "#342056" }}
+              className="salesperson-details-container"
+            >
               <Typography className="salesperson-name">
                 {person.firstName} {person.lastName}
               </Typography>
@@ -44,15 +68,29 @@ const SalesPeople = (props) => {
               <Typography className="col-1">{person.startDate}</Typography>
               <Typography>{person.termDate}</Typography>
               <Button
+                sx={{ color: "#342056" }}
                 className="button"
                 onClick={() => handleButtonClick(person)}
               >
                 Update
               </Button>
-              <Button className="button">Terminate</Button>
+              <Button sx={{ color: "#342056" }} className="button">
+                Terminate
+              </Button>
             </CardContent>
           </Card>
         ))}
+        <Button
+          onClick={handleAddEmployee}
+          variant="outlined"
+          sx={{ color: "black", justifySelf: "left" }}
+        >
+          Add Employee
+        </Button>
+        <AddEmployeeForm
+          addTrigger={addTrigger}
+          setAddTrigger={setAddTrigger}
+        />
         <UpdateForm
           updateTrigger={updateTrigger}
           setUpdateTrigger={setUpdateTrigger}
