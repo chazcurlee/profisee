@@ -3,6 +3,8 @@
   background-color: #639cd9;
   display: flex;
   font-family: "Ubuntu", sans-serif;
+  height: 100%;
+  overflow-y: auto;
 }
 
 #routes {
