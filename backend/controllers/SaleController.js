@@ -1,34 +1,5 @@
 const {Sale, Customer, SalesPerson, Product, Sequelize} = require('../models')
-const {Op} = require('sequelize')
 
-const todaysDate = new Date()
-const currentYear = todaysDate.getFullYear()
-
-const quarterDetermine = (date) => {
-    return Math.floor(date.getMonth() / 3 + 1)
-}
-
-const currentQtr = quarterDetermine(todaysDate)
-
-let quarterBegin;
-let quarterEnd;
-
-if (currentQtr === 1) {
-    quarterBegin = new Date(currentYear.toString(), '01', '01')
-    quarterEnd = new Date(currentYear.toString(), '03', '31')
-}
-if (currentQtr === 2) {
-    quarterBegin = new Date(currentYear.toString(), '04', '01')
-    quarterEnd = new Date(currentYear.toString(), '06', '30')
-}
-if (currentQtr === 3) {
-    quarterBegin = new Date(currentYear.toString(), '07', '01')
-    quarterEnd = new Date(currentYear.toString(), '09', '30')
-}
-if (currentQtr === 4) {
-    quarterBegin = new Date(currentYear.toString(), '10', '01')
-    quarterEnd = new Date(currentYear.toString(), '12', '31')
-}
 
 
 //////////////// GET CONTROLLERS ////////////////
@@ -142,20 +113,7 @@ const GetAscSales = async (req, res) => {
     }
 }
 
-const GetQtrSales = async (req, res) => {
-    try{
-        const qtrSales = await Sale.findAll({
-            where: {
-                [Op.or] : [{
-                    from: {
-                        [Op.between]: [quarterBegin, quarterEnd]
-                    }
-                }]
-            }
-        })
-        res.send(qtrSales)
-    }catch(error) {throw error}
-}
+
 
 const GetLastFiveSales = async (req, res) => {
     try{
@@ -248,7 +206,6 @@ module.exports = {
     GetAllSales,
     GetDescSales,
     GetAscSales,
-    GetQtrSales,
     GetSingleSale,
     GetLastFiveSales,
     CreateSale,

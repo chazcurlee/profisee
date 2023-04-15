@@ -51,6 +51,7 @@ const SalesButton = (props) => {
     console.log(newSale);
     setOpen(false);
     setButtonTrigger(true);
+    window.location.reload();
   };
 
   useEffect(() => {
