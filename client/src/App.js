@@ -65,8 +65,8 @@ function App() {
       <Routes >
         <Route path="/" element={<QuickView recentSales={recentSales} sales={sales} trigger={trigger}/>}/>
         <Route path="/customers" element={<CustomerList customers={customers}/>}/>
-        <Route path="/products" element={<ProductList products={products}/>}/>
-        <Route path="/sales" element={<SalesView sales={sales} ascSales={ascSales} descSales={descSales}/>}/>
+        <Route path="/products" element={<ProductList products={products} discounts={discounts}/>}/>
+        <Route path="/sales" element={<SalesView sales={sales} discounts={discounts} ascSales={ascSales} descSales={descSales}/>}/>
         <Route path="/salespeople" element={<SalesPeople salesPeople={salesPeople} />}/>
         <Route path="/discounts" element={<Discounts discounts={discounts}/>} />
       </Routes>

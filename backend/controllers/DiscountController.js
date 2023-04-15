@@ -1,4 +1,4 @@
-const {Discount, Product} = require('../models')
+const {Discount, Product, Sequelize} = require('../models')
 
 
 //////////////// GET CONTROLLERS ////////////////

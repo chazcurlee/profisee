@@ -19,6 +19,12 @@ const ProductList = (props) => {
     );
   };
 
+  const calculateDiscountPrice = (originalPrice, percentDiscount) => {
+    let decimal = (percentDiscount / 100).toFixed(2);
+    let discountAmt = originalPrice * parseFloat(decimal);
+    return originalPrice - discountAmt;
+  };
+
   return (
     <div id="product-container">
       <h1>Product List</h1>
@@ -32,6 +38,7 @@ const ProductList = (props) => {
             <Typography variant="h5">Purchase Price</Typography>
             <Typography variant="h5">Sale Price</Typography>
             <Typography variant="h5">Commission Percent</Typography>
+            <Typography variant="h5">Discount Price</Typography>
           </CardContent>
         </Card>
         {props.products.map((product) => (
@@ -43,9 +50,16 @@ const ProductList = (props) => {
               <Typography>{product.name}</Typography>
               <Typography>{product.style}</Typography>
               <Typography>{product.currentQuantity}</Typography>
-              <Typography>{product.purchasePrice}</Typography>
-              <Typography>{product.salePrice}</Typography>
+              <Typography>${product.purchasePrice}</Typography>
+              <Typography>${product.salePrice}</Typography>
               <Typography>{product.commissionPercent}%</Typography>
+              <Typography>
+                $
+                {calculateDiscountPrice(
+                  product.salePrice,
+                  product.Discounts[0].discountPercent
+                )}
+              </Typography>
               <div>
                 <Button
                   onClick={() => handleButtonClick(product)}
