@@ -18,31 +18,38 @@ const SalesPeople = (props) => {
     <div id="salespeople-container">
       <h1>Sales Roster</h1>
       <div id="salespeople-list-container">
+        <Card>
+          <CardContent id="salespeople-details-header">
+            <Typography>Name</Typography>
+            <Typography>Address</Typography>
+            <Typography>Phone</Typography>
+            <Typography>Manager</Typography>
+            <Typography>Start Date</Typography>
+            <Typography>Termination Date</Typography>
+          </CardContent>
+        </Card>
         {props.salesPeople.map((person) => (
           <Card>
             <CardContent className="salesperson-details-container">
               <Typography className="salesperson-name">
                 {person.firstName} {person.lastName}
               </Typography>
-              <Typography className="col-1">
-                Address: {person.address}
+              <Typography className="col-1">{person.address}</Typography>
+
+              <Typography className="col-1">{person.phone}</Typography>
+              <Typography className="row-2 col-2">
+                Manager: {person.manager}
               </Typography>
+
+              <Typography className="col-1">{person.startDate}</Typography>
+              <Typography>{person.termDate}</Typography>
               <Button
                 className="button"
                 onClick={() => handleButtonClick(person)}
               >
                 Update
               </Button>
-
-              <Typography className="col-1">Phone: {person.phone}</Typography>
-              <Typography className="row-2 col-2">
-                Manager: {person.manager}
-              </Typography>
               <Button className="button">Terminate</Button>
-              <Typography className="col-1">
-                Start Date: {person.startDate}
-              </Typography>
-              <Typography>Term Date: {person.termDate}</Typography>
             </CardContent>
           </Card>
         ))}

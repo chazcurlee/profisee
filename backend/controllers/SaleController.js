@@ -8,7 +8,7 @@ const GetAllSales = async (req, res) => {
         const allSales = await Sale.findAll({
             raw: true,
             attributes: {
-                include: [[Sequelize.col('Customer.firstName'), 'customerFirstName'], [Sequelize.col('Customer.lastName'), 'customerLastName'], [Sequelize.col('SalesPerson.firstName'), 'salesPersonFirstName'], [Sequelize.col('SalesPerson.lastName'), 'salesPersonLastName'], [Sequelize.col('Product.name'), 'productName']]
+                include: [[Sequelize.col('Customer.firstName'), 'customerFirstName'], [Sequelize.col('Customer.lastName'), 'customerLastName'], [Sequelize.col('SalesPerson.firstName'), 'salesPersonFirstName'], [Sequelize.col('SalesPerson.lastName'), 'salesPersonLastName'], [Sequelize.col('Product.name'), 'productName'], [Sequelize.col("Product.commissionPercent"), "saleCommission"], [Sequelize.col("Product.salePrice"), "salePrice"]]
             },
             include: [
                 {

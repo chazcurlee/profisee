@@ -37,8 +37,11 @@
   border-top: 1px solid #342056;
 }
 
+#recent-sales-title {
+  color: #342056;
+}
+
 .last-five-sales {
-  margin-top: 1rem;
   max-width: 30vw;
   min-height: 10vh;
 }
@@ -49,6 +52,7 @@
   grid-template-rows: repeat(2, 1fr);
   justify-content: center;
   align-items: center;
+  color: #342056;
 }
 
 .recent-sale-detail-container {

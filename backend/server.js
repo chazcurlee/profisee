@@ -55,6 +55,7 @@ app.post('/salespeople', controllerSalesPerson.CreateSalesPerson)
 
 ///////////////// DELETE ROUTES ////////////////
 app.delete('/sale/:sale_id', controllerSale.DeleteSale)
+app.delete('/product/:product_id', controllerProduct.DeleteProduct)
 
 
 /////////// EXPRESS SERVER LISTEN TO PORT ///////////////

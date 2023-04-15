@@ -18,9 +18,27 @@ const UpdateProduct = (props) => {
   const handleChange = (e) => {
     const updatedId = e.target.id;
     const value = e.target.value;
-    const clonedObj = structuredClone(updateProduct);
+    const clonedObj = structuredClone(props.updateProduct);
     clonedObj[updatedId] = value;
-    setSalesPersonUpdate(clonedObj);
+    setProductEditedUpdate(clonedObj);
+  };
+
+  const handleSubmit = async () => {
+    let updatedInfo = await axios.put(
+      `http://localhost:3001/products/${props.updateProduct.id}`,
+      {
+        name: productEditedUpdate.name,
+        manufacturer: productEditedUpdate.manufacturer,
+        style: productEditedUpdate.style,
+        purchasedPrice: productEditedUpdate.purchasedPrice,
+        salePrice: productEditedUpdate.salePrice,
+        currentQuantity: productEditedUpdate.currentQuantity,
+        commissionPercent: productEditedUpdate.commissionPercent,
+      }
+    );
+    props.setUpdateTrigger(false);
+    window.location.reload();
+    console.log(updatedInfo);
   };
 
   useEffect(() => {

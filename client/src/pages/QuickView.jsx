@@ -97,15 +97,22 @@ const QuickView = (props) => {
           ))}
         </Paper>
         <div className="data-placement-right">
-          <Card className="last-five-sales">
+          <Card
+            className="last-five-sales"
+            sx={{ borderBottom: "1px solid #342056;" }}
+          >
             <CardContent>
-              <Typography sx={{ fontSize: "2rem" }}>
+              <Typography id="recent-sales-title" sx={{ fontSize: "2rem" }}>
                 Most Recent Sales
               </Typography>
             </CardContent>
           </Card>
           {props.recentSales.map((sale) => (
-            <Card key={sale.id} className="last-five-sales">
+            <Card
+              key={sale.id}
+              className="last-five-sales"
+              sx={{ borderBottom: "1px solid #342056;" }}
+            >
               <CardContent className="recent-sale-details">
                 <Typography className="recent-sale-detail-container">
                   SalesPerson: {sale.salesPersonFirstName}{" "}

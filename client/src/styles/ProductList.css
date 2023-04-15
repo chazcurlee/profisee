@@ -11,26 +11,17 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
-  gap: 1rem;
+  width: 90%;
   align-self: center;
+}
+
+#product-details-header {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  border-bottom: 1px solid #342056;
 }
 
 .product-details-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  gap: 0.5rem;
-}
-
-.product-name {
-  grid-row: 1;
-  grid-column: 1/4;
-}
-
-.row-4 {
-  grid-row: 4;
-}
-
-.delete {
-  grid-column: 3;
+  grid-template-columns: repeat(8, 1fr);
 }
